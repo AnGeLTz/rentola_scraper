@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Rentola Scraper is a Python-based web scraper designed to gather real estate data from specified URLs, store the information in a JSON file, and populate an SQLite database with the collected data.
+The Rentola Scraper is a Python-based web scraper designed to gather real estate data from specified URLs utilizing playwright library, store the information in a JSON file, and populate an SQLite database with the collected data.
 
 ## Project Structure
 
@@ -17,7 +17,7 @@ The project structure is organized as follows:
 
 - **rentola_scraper_scripts**: Contains the main scraping scripts.
   - `rentola_get_daily.py`: Gathers new URLs for scraping.
-  - `rentola_parse_listing.py`: Extracts data from the scraped URLs and stores it in JSON files within the "listings" folder.
+  - `rentola_parse_listing.py`: Extracts data from the scraped URLs and stores it in JSON files within the "listings" folder. You can modify chunk_size in line 250 to change the number of urls will be scraped concurrently. 
 
 - **listings**: Contains subfolders named with dates (e.g., "2024-03-05") where scraped data is stored in JSON files.
 
@@ -35,12 +35,15 @@ The project structure is organized as follows:
 2. Build and run the Docker container:
 
     ```bash
-    docker build -t rentola-scraper .
-    docker run -v ./database:/database -v ./listings:/listings rentola-scraper
-    '''	
+    docker-compose up
+    ```	
 
-In case of syntax error: unexpected end of file:
-	1. git rm --cached -r .
-	2. git reset --hard
-	3. rebuild the image and then run the container
-		
+##In case of syntax error: unexpected end of file:
+    ```bash
+	docker-compose stop
+	docker-compose down
+        git rm --cached -r .
+	git reset --hard
+	docker-compose up
+        ```
+
