@@ -38,12 +38,34 @@ The project structure is organized as follows:
     docker-compose up
     ```	
 
-##In case of syntax error: unexpected end of file:
-    ```bash
-	docker-compose stop
-	docker-compose down
-        git rm --cached -r .
-	git reset --hard
-	docker-compose up
-        ```
+##In case of syntax error: unexpected end of file
 
+1. Stop Docker Compose services:
+
+    ```bash
+    docker-compose stop
+    ```
+
+2. Remove Docker Compose services:
+
+    ```bash
+    docker-compose down
+    ```
+
+3. Remove untracked files from the Git repository:
+
+    ```bash
+    git rm --cached -r .
+    ```
+
+4. Reset the working directory to the latest commit:
+
+    ```bash
+    git reset --hard
+    ```
+
+5. Start Docker Compose services:
+
+    ```bash
+    docker-compose up
+    ```
