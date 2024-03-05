@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  rentola_scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./database:/app/database
+      - ./listings:/app/listings
